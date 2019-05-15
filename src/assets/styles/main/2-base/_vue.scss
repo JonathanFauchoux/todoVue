@@ -1,0 +1,114 @@
+// @author : Pierre Lovenfosse
+// @contributors : -
+/*===================================================================================*/
+/*  Base | Vue | Partial
+/*===================================================================================*/
+
+[v-cloak] { display: none }
+
+// Vue JS Fade
+
+$times: 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000;
+
+@each $time in $times{
+  .delay-transition-#{$time}{
+    transition-delay: #{$time}ms;
+  }
+  .delay-animation-#{$time}{
+    animation-delay: #{$time}ms;
+  }
+  .duration-animation-#{$time}{
+    animation-duration: #{$time}ms;
+  }
+}
+
+// Vue Bar
+
+.vb{
+  -ms-overflow-style: none;
+
+  .vb-content{
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // Vb | Dragger
+
+  .vb-dragger {
+    @include hover{
+      .vb-dragger-styler {
+        @include media("small-medium"){
+          background-color: rgba(black, 0.3);
+        }
+
+        @include media("large"){
+          background-color: rgba(black, 0.3);
+        }
+      }
+    }
+
+    z-index: 5;
+    width: 1rem;
+    right: 0;
+
+    // Vb | Dragger Style
+
+    .vb-dragger-styler {
+      @include media("small-medium"){
+        background-color: rgba(black, 0.3);
+      }
+
+      @include media("large"){
+        background-color: rgba(black, 0.3);
+      }
+
+      backface-visibility: hidden;
+      transform: rotate3d(0,0,0,0);
+      transition:
+      background-color 100ms ease-out,
+      margin 100ms ease-out,
+      height 100ms ease-out;
+
+
+      margin: .5rem .5rem .5rem 0;
+      border-radius: 2rem;
+      height: calc(100% - 1rem);
+      display: block;
+    }
+  }
+
+  &.vb-scrolling-phantom{
+    .vb-dragger-styler {
+      @include media("small-medium"){
+        background-color: rgba(black, 0.3);
+      }
+
+      @include media("large"){
+        background-color: rgba(black, 0.3);
+      }
+    }
+  }
+
+  &.vb-dragging {
+    .vb-dragger-styler {
+      @include media("small-medium"){
+        background-color: rgba(black, 0.3);
+      }
+
+      @include media("large"){
+        background-color: rgba(black, 0);
+      }
+      height: 100%;
+    }
+  }
+  &.vb-dragging-phantom{
+    .vb-dragger-styler {
+      @include media("small-medium"){
+        background-color: rgba(black, 0.3);
+      }
+
+      @include media("large"){
+        background-color: rgba(black, 0);
+      }
+    }
+  }
+}
